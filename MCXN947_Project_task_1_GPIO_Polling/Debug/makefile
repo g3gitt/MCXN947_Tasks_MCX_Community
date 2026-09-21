@@ -33,7 +33,7 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := MCXN947_Project_pwm_1
+BUILD_ARTIFACT_NAME := MCXN947_Project_task_1_GPIO_Polling_2
 BUILD_ARTIFACT_EXTENSION := axf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
@@ -45,24 +45,24 @@ all:
 	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
 
 # Main-build Target
-main-build: MCXN947_Project_pwm_1.axf
+main-build: MCXN947_Project_task_1_GPIO_Polling_2.axf
 
 # Tool invocations
-MCXN947_Project_pwm_1.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
+MCXN947_Project_task_1_GPIO_Polling_2.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -Xlinker -Map="MCXN947_Project_pwm_1.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T MCXN947_Project_pwm_1_Debug.ld -o "MCXN947_Project_pwm_1.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -Xlinker -Map="MCXN947_Project_task_1_GPIO_Polling_2.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T MCXN947_Project_task_1_GPIO_Polling_2_Debug.ld -o "MCXN947_Project_task_1_GPIO_Polling_2.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) MCXN947_Project_pwm_1.axf
+	-$(RM) MCXN947_Project_task_1_GPIO_Polling_2.axf
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "MCXN947_Project_pwm_1.axf"; # arm-none-eabi-objcopy -v -O binary "MCXN947_Project_pwm_1.axf" "MCXN947_Project_pwm_1.bin" ; # checksum -p MCXN947 -d "MCXN947_Project_pwm_1.bin";
+	-arm-none-eabi-size "MCXN947_Project_task_1_GPIO_Polling_2.axf"; # arm-none-eabi-objcopy -v -O binary "MCXN947_Project_task_1_GPIO_Polling_2.axf" "MCXN947_Project_task_1_GPIO_Polling_2.bin" ; # checksum -p MCXN947 -d "MCXN947_Project_task_1_GPIO_Polling_2.bin";
 	-@echo ' '
 
 .PHONY: all clean dependents main-build post-build

@@ -329,6 +329,7 @@ BOARD_InitDEBUG_UARTPins:
     invert_input: normal}
   - {pin_num: B1, peripheral: LP_FLEXCOMM4, signal: LPFLEXCOMM_P1, pin_signal: PIO1_9/TRACE_DATA1/FC4_P1/FC5_P5/CT_INP9/SCT0_OUT3/FLEXIO0_D17/SMARTDMA_PIO5/PLU_OUT1/ENET0_TXD3/I3C1_SCL/TSI0_CH18/ADC1_A9,
     slew_rate: fast, open_drain: disable, drive_strength: low, pull_select: down, pull_enable: disable, passive_filter: disable, input_buffer: enable, invert_input: normal}
+  - {pin_num: B7, peripheral: GPIO0, signal: 'GPIO, 23', pin_signal: PIO0_23/WUU0_IN5/EWM0_OUT_b/FC1_P3/CT_INP3/FLEXIO0_D7/ADC0_A15/CMP2_IN2, direction: INPUT}
   - {pin_num: B7, peripheral: WUU0, signal: 'P, 5', pin_signal: PIO0_23/WUU0_IN5/EWM0_OUT_b/FC1_P3/CT_INP3/FLEXIO0_D7/ADC0_A15/CMP2_IN2, identifier: ''}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
@@ -342,13 +343,22 @@ BOARD_InitDEBUG_UARTPins:
  * END ****************************************************************************************************************/
 void BOARD_InitDEBUG_UARTPins(void)
 {
+    /* Enables the clock for GPIO0: Enables clock */
+    CLOCK_EnableClock(kCLOCK_Gpio0);
     /* Enables the clock for PORT0 controller: Enables clock */
     CLOCK_EnableClock(kCLOCK_Port0);
     /* Enables the clock for PORT1: Enables clock */
     CLOCK_EnableClock(kCLOCK_Port1);
 
-    /* PORT0_23 (pin B7) is configured as WUU0_IN5 */
-    PORT_SetPinMux(PORT0, 23U, kPORT_MuxAlt0);
+    gpio_pin_config_t SW2_config = {
+        .pinDirection = kGPIO_DigitalInput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO0_23 (pin B7)  */
+    GPIO_PinInit(BOARD_INITDEBUG_UARTPINS_SW2_GPIO, BOARD_INITDEBUG_UARTPINS_SW2_PIN, &SW2_config);
+
+    /* PORT0_23 (pin B7) is configured as PIO0_23, WUU0_IN5 */
+    PORT_SetPinMux(BOARD_INITDEBUG_UARTPINS_SW2_PORT, BOARD_INITDEBUG_UARTPINS_SW2_PIN, kPORT_MuxAlt0);
 
     PORT0->PCR[23] = ((PORT0->PCR[23] &
                        /* Mask bits to zero which are setting */
@@ -712,30 +722,6 @@ void BOARD_InitBUTTONsPins(void)
     /* PORT0_6 (pin C14) is configured as PIO0_6 */
     PORT_SetPinConfig(BOARD_INITBUTTONSPINS_SW3_PORT, BOARD_INITBUTTONSPINS_SW3_PIN, &SW3);
 }
-
-#include "pin_mux.h"
-#include "fsl_common.h"  // For SYSCON base address
-
-void TEACH_InitButtons_lowlevel(void) {
-    /* Step 2: Initialize SW2 (P0_23) */
-
-    // 1. Enable the clock for PORT0 (bit 13 in AHBCLKCTRL0)
-    SYSCON->AHBCLKCTRLSET[0] = (1UL << 13);
-
-    // 2. Enable the clock for GPIO0 (bit 19 in AHBCLKCTRL0)
-    SYSCON->AHBCLKCTRLSET[0] = (1UL << 19);
-
-    // 3. Configure P0_23 as GPIO with pull-up resistor enabled AND input buffer ENABLED
-    PORT0->PCR[23] = 0UL; // Clear existing config
-    PORT0->PCR[23] = PORT_PCR_MUX(0)    // GPIO mode
-                   | PORT_PCR_PE(1)     // Enable internal pull resistor
-                   | PORT_PCR_PS(1)     // Select pull-up resistor
-                   | PORT_PCR_IBE(1);   // <<<<< IMPORTANT: Enable input buffer
-
-    // 4. Set P0_23 as an input (write 0 to the PDDR bit)
-    GPIO0->PDDR &= ~(1UL << 23);
-}
-
 /***********************************************************************************************************************
  * EOF
  **********************************************************************************************************************/

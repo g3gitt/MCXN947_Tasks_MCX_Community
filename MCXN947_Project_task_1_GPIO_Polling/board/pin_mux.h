@@ -45,8 +45,19 @@ void BOARD_InitBootPins(void);
 #define BOARD_INITDEBUG_UARTPINS_DEBUG_UART_TX_PIN_MASK (1U << 9U)      /*!<@brief PORT pin mask */
                                                                         /* @} */
 
-void TEACH_InitButtons_lowlevel(void);
+/*! @name PORT0_23 (coord B7), P0_23/SJ9[1]/SW2[3]/SW2[4]
+  @{ */
 
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITDEBUG_UARTPINS_SW2_GPIO GPIO0                /*!<@brief GPIO peripheral base pointer */
+#define BOARD_INITDEBUG_UARTPINS_SW2_GPIO_PIN 23U              /*!<@brief GPIO pin number */
+#define BOARD_INITDEBUG_UARTPINS_SW2_GPIO_PIN_MASK (1U << 23U) /*!<@brief GPIO pin mask */
+
+/* Symbols to be used with PORT driver */
+#define BOARD_INITDEBUG_UARTPINS_SW2_PORT PORT0                /*!<@brief PORT peripheral base pointer */
+#define BOARD_INITDEBUG_UARTPINS_SW2_PIN 23U                   /*!<@brief PORT pin number */
+#define BOARD_INITDEBUG_UARTPINS_SW2_PIN_MASK (1U << 23U)      /*!<@brief PORT pin mask */
+                                                               /* @} */
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
