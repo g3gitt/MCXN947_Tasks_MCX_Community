@@ -1,0 +1,7 @@
+../lcd/lcd_drv.c:53:13:Delay	24	static
+../lcd/lcd_drv.c:181:6:LCD_ST7796S_IPS_Init	56	static
+../lcd/lcd_drv.c:368:6:LCD_SetWindow	32	static
+../lcd/lcd_drv.c:388:6:LCD_FillColorPolling	24	static
+../lcd/lcd_drv.c:395:6:LCD_FillColorWhole	16	static
+../lcd/lcd_drv.c:406:6:LCD_FillColorDMA	24	static
+../lcd/lcd_drv.c:431:6:LCD_FillPicDMA	24	static

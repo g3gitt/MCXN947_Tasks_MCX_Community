@@ -1,0 +1,37 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../lcd/flexio_8080_drv.c \
+../lcd/lcd_drv.c \
+../lcd/pic_hex_data.c 
+
+C_DEPS += \
+./lcd/flexio_8080_drv.d \
+./lcd/lcd_drv.d \
+./lcd/pic_hex_data.d 
+
+OBJS += \
+./lcd/flexio_8080_drv.o \
+./lcd/lcd_drv.o \
+./lcd/pic_hex_data.o 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+lcd/%.o: ../lcd/%.c lcd/subdir.mk
+	@echo 'Building file: $<'
+	@echo 'Invoking: MCU C Compiler'
+	arm-none-eabi-gcc -D__REDLIB__ -DCPU_MCXN947VAB -DCPU_MCXN947VAB_cm33 -DCPU_MCXN947VAB_cm33_core0 -DSDK_OS_BAREMETAL -DLCD_ST7796S_IPS -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -DSERIAL_PORT_TYPE_UART=1 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\board" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\lcd" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\source" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\drivers" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\device" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\utilities\debug_console" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\component\uart" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\utilities\debug_console\config" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\component\serial_manager" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\component\lists" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\device\periph" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\utilities" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\CMSIS" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\CMSIS\m-profile" -I"C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\utilities\str" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="$(<D)/"= -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+
+clean: clean-lcd
+
+clean-lcd:
+	-$(RM) ./lcd/flexio_8080_drv.d ./lcd/flexio_8080_drv.o ./lcd/lcd_drv.d ./lcd/lcd_drv.o ./lcd/pic_hex_data.d ./lcd/pic_hex_data.o
+
+.PHONY: clean-lcd
+

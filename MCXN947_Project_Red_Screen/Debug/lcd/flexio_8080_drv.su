@@ -1,0 +1,17 @@
+C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\CMSIS/core_cm33.h:2358:22:__NVIC_EnableIRQ	16	static
+C:\Users\Lenovo\Documents\MCUXpressoIDE_25.6.136\workspace\MCXN947_Project_lcd_task_1\drivers/fsl_clock.h:1492:20:CLOCK_EnableClock	24	static
+../lcd/flexio_8080_drv.c:67:6:FLEXIO_8080_Init	8	static
+../lcd/flexio_8080_drv.c:89:6:FLEXIO_8080_Type_GetDefaultConfig	4	static
+../lcd/flexio_8080_drv.c:107:13:FLEXIO_8080_SglBeatWR_GetRegConfig	16	static
+../lcd/flexio_8080_drv.c:145:13:FLEXIO_8080_MulBeatWR_GetRegConfig	24	static
+../lcd/flexio_8080_drv.c:197:13:FLEXIO_8080_ConfigSglBeatWR	16	static
+../lcd/flexio_8080_drv.c:221:13:FLEXIO_8080_ConfigMulBeatWR	24	static
+../lcd/flexio_8080_drv.c:250:13:flexio_8080_mulbeat_dma_config	24	static
+../lcd/flexio_8080_drv.c:281:13:FLEXIO_8080_MulBeatWR_DMA_Enable	16	static
+../lcd/flexio_8080_drv.c:297:6:EDMA_0_CH0_IRQHandler	8	static
+../lcd/flexio_8080_drv.c:316:6:FLEXIO_8080_SglBeatWR_1Prm	16	static
+../lcd/flexio_8080_drv.c:360:6:FLEXIO_8080_SglBeatWR_nPrm	32	static
+../lcd/flexio_8080_drv.c:417:7:FLEXIO_8080_SglBeatWR_nSamePrm	32	static
+../lcd/flexio_8080_drv.c:481:13:FLEXIO_8080_MulBeatWR_Callback	16	static
+../lcd/flexio_8080_drv.c:547:6:FLEXIO_8080_MulBeatWR_nPrm	40	static
+../lcd/flexio_8080_drv.c:611:6:Demo_FLEXIO_8080_Init	8	static
